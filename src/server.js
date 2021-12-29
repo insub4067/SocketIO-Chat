@@ -28,20 +28,30 @@ const wsServer = SocketIO(httpServer);
 wsServer.on('connection', (socket) => {
     console.log("SOCKET CONNECTED");
 
-    socket.on('room', (msg, done) => {
+    socket.onAny( (event) => {
+        console.log(`SOCKET EVENT : ${event}`);
+    })
 
-        console.log(msg)
+    socket.on('room', (roomName, done) => {
+        socket.join(roomName)
+        done();
+        socket.to(roomName).emit("welcome")
+    })
 
-        setTimeout(()=>{
-            done("Task is Done")
-        }, 3000)
-
-
+    socket.on('message', (message, roomName, done) => {
+        socket.to(roomName).emit('message', message)
+        done();
     })
 
     socket.on('disconnect', () => {
         console.log('SOCKET DISCONNECTED');
       });
+
+    socket.on("disconnecting", () => {
+        socket.rooms.forEach( (room) => {
+            socket.to(room).emit("bye")
+        })
+    })
 
 })
 

@@ -11,9 +11,14 @@ html(lang="en")
             h1 Zoom
         main
             div#welcome
-                form(action="") 
+                form
                     input(type="text", required, placeholder="room name")
-                    button Enter Room
-          
+                    button Enter
+            div#room
+                h3 
+                ul 
+                form    
+                    input(type="text", required, placeholder="Message")
+                    button Send 
         script(src="/socket.io/socket.io.js")  
         script(src='/public//js/app.js')
