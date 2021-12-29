@@ -1,6 +1,9 @@
 import express from "express";
-import WebSocket from "ws";
+import SocketIO from "socket.io";
 import http from "http"; 
+import Server from "socket.io";
+import { set } from "express/lib/application";
+
 
 const app = express();
 
@@ -13,41 +16,35 @@ app.get("/*", (req, res) => res.redirect("/"));
 
 const handleListen = () => console.log("Listen on http://localhost:3000")
  
+
+
 // 서버 만들고
-const server = http.createServer(app);
-// 서버 합치기
-const wss = new WebSocket.Server({server});
+const httpServer = http.createServer(app);
+// 소켓 서버랑 합치기 
+const wsServer = SocketIO(httpServer);
 
-const sockets = []
 
-// 연결됐을 경우
-wss.on("connection", (socket) => {
+// 소켓 서버랑 연결시
+wsServer.on('connection', (socket) => {
+    console.log("SOCKET CONNECTED");
 
-    sockets.push(socket)
+    socket.on('room', (msg, done) => {
 
-    socket['nickname'] = 'Anonymous'
+        console.log(msg)
 
-    // 연결 됐을때 출력
-    console.log("CONNECTED TO BROWSER");
+        setTimeout(()=>{
+            done("Task is Done")
+        }, 3000)
 
-    // 연결 끊겼을 경우
-    socket.on("close", ()=>{
-        console.log("DISCONNECTED FROM BROWSER");
-    });
 
-    // 메시지가 왔을 경우
-    socket.on("message", (msg) => {
-        const message = JSON.parse(msg)
-        switch (message.type){
-            case "message":
-                sockets.forEach((aSocket) => aSocket.send(`${socket.nickname} : ${message.payload}`))
-                break
-            case "nickname":
-                socket['nickname'] = message.payload
-                break
-        }
-    });
+    })
 
-});
+    socket.on('disconnect', () => {
+        console.log('SOCKET DISCONNECTED');
+      });
 
-server.listen(3000, handleListen); 
+})
+
+
+
+httpServer.listen(3000, handleListen); 

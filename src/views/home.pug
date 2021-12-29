@@ -10,13 +10,10 @@ html(lang="en")
         header
             h1 Zoom
         main
-            ul 
-
-            form#nickname
-                input(type="text" placeholder="Nickname", required)
-                button Save
-
-            form#message
-                input(type="text" placeholder="Message", required)
-                button Send
+            div#welcome
+                form(action="") 
+                    input(type="text", required, placeholder="room name")
+                    button Enter Room
+          
+        script(src="/socket.io/socket.io.js")  
         script(src='/public//js/app.js')
