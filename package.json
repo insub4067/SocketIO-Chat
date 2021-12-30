@@ -22,9 +22,11 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
+    "crypto": "^1.0.1",
     "express": "^4.17.2",
     "pug": "^3.0.2",
     "socket.io": "^4.4.0",
+    "uuid": "^8.3.2",
     "ws": "^8.4.0"
   }
 }

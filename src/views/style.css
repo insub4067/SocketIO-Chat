@@ -1,0 +1,82 @@
+.logo {
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+}
+nav {
+    margin: 0;
+}
+ul {
+    display: inline;
+}
+main {
+    width: 75%;
+    margin: auto;
+}
+.form {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 1rem;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    width: auto;
+    margin: 2rem 0rem;
+}
+.form input {
+    height: 3rem;
+    margin: 0 0 0 0;
+}
+.form button {
+    padding: 1rem 0.5rem;
+}
+.room {
+    display: flex;
+    justify-content: center;
+}
+.name {
+    display: flex;
+    justify-content: start;
+}
+.name input {
+    height: 1rem;
+}
+.name button {
+    padding: 0.1rem;
+}
+ul {
+    list-style: none;
+}
+.msg {
+    display: flex;
+    margin: 1rem 0rem;
+}
+.msg input {
+    height: 3rem;
+    margin: 0.5rem 0rem 0rem 0rem;
+    width: 80%;
+}
+.roomList li {
+    text-decoration: underline;
+}
+.msgList {
+    display: flex;
+    flex-direction: column;
+}
+.selfMessage {
+    align-self: flex-end;
+    width: auto;
+    background-color: #dcdcdc;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    margin: 0.1rem 0rem;
+}
+.otherMessage {
+    align-self: flex-start;
+    width: auto;
+    background-color: #dcdcdc;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    margin: 0.1rem 0rem;
+}

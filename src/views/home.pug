@@ -5,20 +5,32 @@ html(lang="en")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+        style
+            include style.css
+
         title ZoomClone
     body 
-        header
-            h1 Zoom
+        nav#nav 
+            a(href="/") 
+                img.logo(src="https://i0.wp.com/zeevector.com/wp-content/uploads/2021/03/Zoom-Logo-Vector-.png?fit=940%2C288&ssl=1")
+            form#enter.form.room
+                input(type="text", required, placeholder="Create Room")
+                button Enter
         main
-            div#welcome
-                form
-                    input(type="text", required, placeholder="room name")
-                    button Enter
+            div#lobby
+                h3
+                form#name.form.name
+                    input(type="text", required, placeholder="Nickname")
+                    button Submit
+                h4 Rooms
+                ul.roomList
+
             div#room
-                h3 
-                ul 
-                form    
+                h3#roomName
+                h3#participant
+                div#msgList.msgList
+                form#msg.msg
                     input(type="text", required, placeholder="Message")
                     button Send 
         script(src="/socket.io/socket.io.js")  
-        script(src='/public//js/app.js')
+        script(src="/public/js/app.js")
