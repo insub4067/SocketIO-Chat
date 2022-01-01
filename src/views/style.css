@@ -13,6 +13,10 @@ main {
     width: 75%;
     margin: auto;
 }
+form {
+    max-width: none !important;
+    padding: 0;
+}
 .form {
     display: flex;
     justify-content: end;
@@ -50,18 +54,25 @@ ul {
 }
 .msg {
     display: flex;
+    width: 100%;
     margin: 1rem 0rem;
 }
 .msg input {
     height: 3rem;
-    margin: 0.5rem 0rem 0rem 0rem;
+    margin: 0.5rem 0rem 0rem 2rem;
     width: 80%;
+}
+
+.msg button {
+    margin-right: 0;
 }
 .roomList li {
     text-decoration: underline;
 }
 .msgList {
     display: flex;
+    width: auto;
+    margin: auto;
     flex-direction: column;
 }
 .selfMessage {

@@ -54,7 +54,6 @@ wsServer.on('connection', (socket) => {
         socket.join(roomName)
         done(roomName);
         socket.to(roomName).emit("joined", socket.nickname, roomName, countMembers(roomName))
-        socket.emit("joined", socket.nickname, roomName, countMembers(roomName))
         wsServer.sockets.emit("currentRooms", publicRooms())
         socket.to(roomName).emit("count",roomName, countMembers(roomName))
         socket.emit("count", countMembers(roomName))
